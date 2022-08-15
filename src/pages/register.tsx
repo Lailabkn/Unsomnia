@@ -95,8 +95,8 @@ export default function Register() {
             </InputContainer>
             <button type="submit" style={{background:'yellow', borderRadius:'16px', alignSelf:'center', width:'100%', marginTop:'0.5rem'}}>Register</button>
           </FormStyled>
-          <p>
-            Already have an account? <a href="./login">Log In</a>
+          <p style={{color:"white"}}>
+            Already have an account? <a href="./login" style={{color:"white", textDecoration:"underline"}}>Log In</a>
           </p>
         </FormContainer>
       </Main>

@@ -9,11 +9,11 @@ src/node_modules
 /coverage
 
 # next.js
-/.next/
-/out/
+src/.next/
+src/out/
 
 # production
-/build
+src/build
 
 # misc
 src/.DS_Store

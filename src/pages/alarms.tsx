@@ -10,14 +10,22 @@ import { addAlarm, deleteAlarm, getMyAlarm } from "../utils/api";
 const Main = styled.div`
   align-items: center;
   display: flex;
+  flex-direction: column;
+  gap: 1em;
   justify-content: center;
+
+  @media (min-width: 1366px) {
+    flex-direction: row;
+  }
 `;
 
 const AlarmList = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  gap: 1em;
   justify-content: center;
+  width: 100%;
 `;
 
 export default function AlarmPage() {
@@ -43,7 +51,11 @@ export default function AlarmPage() {
   });
 
   if (status === "loading") {
-    return <LoadingRotation />;
+    return (
+      <BaseLayout>
+        <LoadingRotation />
+      </BaseLayout>
+    );
   }
 
   if (status === "error") {
@@ -52,7 +64,7 @@ export default function AlarmPage() {
 
   return (
     <BaseLayout showAccount={true}>
-      <Main style={{color:"white"}}>
+      <Main style={{ color: "white" }}>
         <AlarmList>
           {(alarmList ?? []).map((alarm) => (
             <AlarmComponent

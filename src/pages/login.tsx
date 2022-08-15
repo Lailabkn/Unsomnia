@@ -51,6 +51,7 @@ export const InputText = styled.input`
 export const SubmitButton = styled.button`
   border-radius: 0.5em;
   background-color: #ffe16b;
+  padding: 0.25em 0;
   font-size: 1em;
 `;
 

@@ -1,22 +1,30 @@
 import styled from "styled-components";
-import { FormEvent, useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { FormEvent, ReactNode, useEffect, useState } from "react";
 import { Alarm, Urgency } from "../../types/types";
+import {
+  FormContainer,
+  FormStyled,
+  InputContainer,
+  InputText,
+  Main,
+  SubmitButton,
+} from "../../pages/login";
 
-const Main = styled.div`
+interface RadioButtonProps {
+  typeOfUrgency: Urgency;
+  selected: boolean;
+}
+
+const MainAlarm = styled(Main)`
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
-
-const FormStyled = styled.form``;
-
-const InputContainer = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
+  border: solid 2px var(--yellow-color);
+  border-radius: 0.25em;
+  padding: 1em;
 `;
 
 const RadioContainer = styled.div`
@@ -24,6 +32,16 @@ const RadioContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  gap: 0.25em;
+`;
+
+const RadioButton = styled.button<RadioButtonProps>`
+  background-color: ${({ typeOfUrgency, selected }) =>
+    selected ? `var(--${typeOfUrgency})` : "white"};
+  color: ${({ selected }) => (selected ? "white" : "black")};
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.25em 0.5em;
 `;
 
 const Spacer = styled.div`
@@ -67,20 +85,25 @@ export default function AlarmForm({
   }
 
   return (
-    <Main>
+    <MainAlarm>
+      <FontAwesomeIcon icon={faClock} size='2x' />
       <FormStyled onSubmit={(e) => handleSubmit(e)}>
         <InputContainer>
-          <label htmlFor="alarmName" style={{color:'white'}}>Title</label>
-          <input
-            id="alarmName"
+          <label htmlFor='alarmName' style={{ color: "white" }}>
+            Title
+          </label>
+          <InputText
+            id='alarmName'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </InputContainer>
         <InputContainer>
-          <label htmlFor="alarmDescription" style={{color:'white'}}>Description</label>
-          <input
-            id="alarmDescription"
+          <label htmlFor='alarmDescription' style={{ color: "white" }}>
+            Description
+          </label>
+          <InputText
+            id='alarmDescription'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -89,41 +112,60 @@ export default function AlarmForm({
           <p>Urgency</p>
           <Spacer />
           <RadioContainer>
-            <button type="button" onClick={() => setUrgency("low")}>
+            <RadioButton
+              selected={urgency === "low"}
+              typeOfUrgency='low'
+              type='button'
+              onClick={() => setUrgency("low")}
+            >
               Low
-            </button>
-            <button type="button" onClick={() => setUrgency("med")}>
+            </RadioButton>
+            <RadioButton
+              selected={urgency === "med"}
+              type='button'
+              typeOfUrgency='med'
+              onClick={() => setUrgency("med")}
+            >
               Med
-            </button>
-            <button type="button" onClick={() => setUrgency("high")}>
+            </RadioButton>
+            <RadioButton
+              selected={urgency === "high"}
+              type='button'
+              typeOfUrgency='high'
+              onClick={() => setUrgency("high")}
+            >
               High
-            </button>
+            </RadioButton>
           </RadioContainer>
         </RadioContainer>
         <InputContainer>
-          <label htmlFor="alarmHour" style={{color:'white'}}>Title</label>
-          <input
-            id="alarmHour"
-            type="number"
-            min="0"
-            max="24"
+          <label htmlFor='alarmHour' style={{ color: "white" }}>
+            Hour
+          </label>
+          <InputText
+            id='alarmHour'
+            type='number'
+            min='0'
+            max='24'
             value={hour}
             onChange={(e) => setHour(e.target.value)}
           />
         </InputContainer>
         <InputContainer>
-          <label htmlFor="alarmMinute" style={{color:'white'}}>Title</label>
-          <input
-            id="alarmMinute"
-            type="number"
-            min="0"
-            max="60"
+          <label htmlFor='alarmMinute' style={{ color: "white" }}>
+            Minute
+          </label>
+          <InputText
+            id='alarmMinute'
+            type='number'
+            min='0'
+            max='60'
             value={minute}
             onChange={(e) => setMinute(e.target.value)}
           />
         </InputContainer>
-        <button type="submit">Create Alarm</button>
+        <SubmitButton type='submit'>Create Alarm</SubmitButton>
       </FormStyled>
-    </Main>
+    </MainAlarm>
   );
 }

@@ -1,6 +1,10 @@
 html,
 body {
   --body-color: #0B1E33;
+  --yellow-color: #ffe16b;
+  --high: #c6262e;
+  --med: #f37329;
+  --low: #d48e15;
   padding: 0;
   margin: 0;
   font-family: 'Inter', "Sans-Serif";

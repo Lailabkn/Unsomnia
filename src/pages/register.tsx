@@ -27,8 +27,8 @@ export default function Register() {
     mutateAsync: registerAndMutate,
   } = useMutation(register, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["me"]);
       window.location.href = "./";
+      queryClient.invalidateQueries(["me"]);
     },
     onError: () => {
       setUsername("");

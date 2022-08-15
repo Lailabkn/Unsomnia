@@ -52,7 +52,7 @@ export default function AlarmPage() {
 
   return (
     <BaseLayout showAccount={true}>
-      <Main>
+      <Main style={{color:"white"}}>
         <AlarmList>
           {(alarmList ?? []).map((alarm) => (
             <AlarmComponent

@@ -43,6 +43,8 @@ export const InputContainer = styled.div`
 `;
 
 export const InputText = styled.input`
+  outline: none;
+  padding: 0.25em;
   width: 100%;
 `;
 

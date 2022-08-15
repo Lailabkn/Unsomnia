@@ -1,5 +1,5 @@
 # Unsomnia
-## Kelompok 22 Healthy Sleep Enjoyer
+## Kelompok-22 Healthy Sleep Enjoyer
 | Nama | NIM | Pembagian Tugas |
 | ------ | ----| ---- |
 |Antonio Natthan Krishna|16521027|  |
@@ -16,9 +16,9 @@
 |Nabilah Amanda Putri|16521511| |
 |Aniqa Fayyaza Akbar|16521519| |
 
-Judul Solusi : Final Solution to The Sleep Question
-Nomor Kelompok : 22
-Nama Kelompok : Healthy Sleep Enjoyer
+Judul Solusi    : Final Solution to The Sleep Question
+Nomor Kelompok  : 22
+Nama Kelompok   : Healthy Sleep Enjoyer
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

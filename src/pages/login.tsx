@@ -72,6 +72,7 @@ export default function Login() {
               <label htmlFor="password" style={{color:'white', marginTop:'0.5rem'}}>Password</label>
               <input
                 id="password"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />

@@ -79,6 +79,7 @@ export default function Register() {
               <label htmlFor="password" style={{color:'white'}}>Password</label>
               <input
                 id="password"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -87,6 +88,7 @@ export default function Register() {
               <label htmlFor="checkerPassword" style={{color:'white'}}>Repeat Password</label>
               <input
                 id="checkerPassword"
+                type="password"
                 value={checkerPassword}
                 onChange={(e) => setCheckerPassword(e.target.value)}
               />

@@ -3,9 +3,10 @@ body {
   --body-color: #0B1E33;
   padding: 0;
   margin: 0;
-  font-family: "Averia Serif Libre", "Sans-Serif";
+  font-family: 'Inter', "Sans-Serif";
   ;
   background-color: var(--body-color);
+  color: white;
 }
 
 a {

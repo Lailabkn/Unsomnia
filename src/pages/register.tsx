@@ -1,27 +1,18 @@
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FormEvent, useState } from "react";
 import styled from "styled-components";
 import BaseLayout from "../components/layout/base";
 import { register } from "../utils/api";
-
-const Main = styled.div``;
-
-const FormContainer = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const FormStyled = styled.form``;
-
-const InputContainer = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-`;
+import {
+  FormContainer,
+  FormStyled,
+  InputContainer,
+  InputText,
+  Main,
+  SubmitButton,
+} from "./login";
 
 export default function Register() {
   const queryClient = useQueryClient();
@@ -57,46 +48,61 @@ export default function Register() {
   return (
     <BaseLayout>
       <Main>
+        <FontAwesomeIcon icon={faUser} size='2x' />
         <FormContainer>
           <FormStyled onSubmit={(e) => handleRegister(e)}>
             <InputContainer>
-              <label htmlFor="username" style={{color:'white'}}>Username</label>
-              <input
-                id="username"
+              <label htmlFor='username' style={{ color: "white" }}>
+                Username
+              </label>
+              <InputText
+                id='username'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </InputContainer>
             <InputContainer>
-              <label htmlFor="email" style={{color:'white'}}>Email</label>
-              <input
-                id="email"
+              <label htmlFor='email' style={{ color: "white" }}>
+                Email
+              </label>
+              <InputText
+                id='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </InputContainer>
             <InputContainer>
-              <label htmlFor="password" style={{color:'white'}}>Password</label>
-              <input
-                id="password"
-                type="password"
+              <label htmlFor='password' style={{ color: "white" }}>
+                Password
+              </label>
+              <InputText
+                id='password'
+                type='password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </InputContainer>
             <InputContainer>
-              <label htmlFor="checkerPassword" style={{color:'white'}}>Repeat Password</label>
-              <input
-                id="checkerPassword"
-                type="password"
+              <label htmlFor='checkerPassword' style={{ color: "white" }}>
+                Repeat Password
+              </label>
+              <InputText
+                id='checkerPassword'
+                type='password'
                 value={checkerPassword}
                 onChange={(e) => setCheckerPassword(e.target.value)}
               />
             </InputContainer>
-            <button type="submit" style={{background:'yellow', borderRadius:'16px', alignSelf:'center', width:'100%', marginTop:'0.5rem'}}>Register</button>
+            <SubmitButton type='submit'>Register</SubmitButton>
           </FormStyled>
-          <p style={{color:"white"}}>
-            Already have an account? <a href="./login" style={{color:"white", textDecoration:"underline"}}>Log In</a>
+          <p style={{ color: "white" }}>
+            Already have an account?{" "}
+            <a
+              href='./login'
+              style={{ color: "white", textDecoration: "underline" }}
+            >
+              Log In
+            </a>
           </p>
         </FormContainer>
       </Main>

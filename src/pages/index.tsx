@@ -9,6 +9,7 @@ import { QueryKey, useQuery } from "@tanstack/react-query";
 import { getMe } from "../utils/api";
 import { UserOpaque } from "../types/types";
 import LoadingRotation from "../components/elements/loading";
+import { useRouter } from "next/router";
 
 const Container = styled.div`
   align-items: center;
@@ -16,11 +17,30 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 1em;
   height: 100%;
   width: 100%;
 `;
 
+const MainTitle = styled.h2`
+  font-family: "Averia Serif Libre", "Sans-Serif";
+  font-size: 3rem;
+`;
+
+const SubTitle = styled.h3`
+  font-family: "Averia Serif Libre", "Sans-Serif";
+`;
+
+const Button = styled.button`
+  background-color: yellow;
+  border-radius: 1rem;
+  padding: 0.5em;
+  text-align: center;
+  width: 100%;
+`;
+
 const Home: NextPage = () => {
+  const router = useRouter();
   const { data, status } = useQuery<UserOpaque | undefined>(["me"], getMe, {
     retry: 1,
   });
@@ -33,15 +53,19 @@ const Home: NextPage = () => {
     return (
       <BaseLayout>
         <Container>
-          <h2 style={{font:'Averia Serif Libre', marginBottom:"0px", fontSize:"48px"}}>Insomnia?</h2>
-          <h3 style={{font:'Averia Serif Libre', marginTop:"0px"}}>We can help with that</h3>
-          <a href={"/login"} style={{background: 'yellow', borderRadius:'16px', height:'35px', width:'100%', textAlign:'center', font: 'Averia Serif Libre'}}>Join Now</a>
+          <MainTitle>Insomnia?</MainTitle>
+          <SubTitle>We can help with that</SubTitle>
+          <Button onClick={() => router.push("/login")}>Join Now</Button>
         </Container>
       </BaseLayout>
     );
   }
 
-  return <LoadingRotation />;
+  return (
+    <BaseLayout>
+      <LoadingRotation />
+    </BaseLayout>
+  );
 };
 
 export default Home;

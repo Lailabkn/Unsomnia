@@ -15,7 +15,7 @@ const Main = styled.div`
   color: white;
   display: flex;
   justify-content: center;
-  padding: 0 1em;
+  padding: 0.5em 1em;
   width: 100%;
 `;
 

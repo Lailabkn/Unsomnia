@@ -29,6 +29,7 @@ const Spacer = styled.div`
 
 const ButtonStyled = styled.div`
   background-color: rgba(0, 0, 0, 0);
+  pointer-events: auto;
 `;
 
 const DropdownContainer = styled.div`
@@ -40,6 +41,19 @@ const Dropdown = styled.div<IDropdown>`
   display: ${({ show }) => (show ? "flex" : "none")};
   top: 100%;
   right: 0;
+  pointer-events: none;
+`;
+
+const ButtonContainer = styled.div`
+  align-items: end;
+  background-color: white;
+  border-radius: 0.25em;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1em;
+  padding: 0.5em;
 `;
 
 function AccountButton() {
@@ -65,7 +79,9 @@ function AccountButton() {
         <FontAwesomeIcon icon={faCircleUser} fontSize={"2em"} />
       </ButtonStyled>
       <Dropdown show={showDropdown}>
-        <p onClick={() => logoutAndMutate()}>Logout</p>
+        <ButtonContainer>
+          <p onClick={() => logoutAndMutate()}>Logout</p>
+        </ButtonContainer>
       </Dropdown>
     </DropdownContainer>
   );
